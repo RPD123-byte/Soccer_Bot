@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask Flask App</title>
+    <script>
+        // Function to handle the form submission
+        async function submitQuestion() {
+            // Prevent the form from submitting in the traditional way
+            event.preventDefault();
+
+            // Get the user's question from the input field
+            let userQuestion = document.getElementById('question').value;
+
+            // Prepare the request payload
+            let payload = {
+                question: userQuestion
+            };
+
+            try {
+                // Send a POST request to the Flask server
+                let response = await fetch('http://127.0.0.1:4000/ask', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
+                    let data = await response.json();
+                    // Display the response on the webpage
+                    document.getElementById('response').innerText = data.keywords;
+                } else {
+                    console.error('Server error:', response.status);
+                }
+            } catch (error) {
+                console.error('Network error:', error);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Ask a Question</h1>
+    <form onsubmit="submitQuestion()">
+        <input type="text" id="question" placeholder="Enter your question" required>
+        <button type="submit">Ask</button>
+    </form>
+    <h2>Response:</h2>
+    <div id="response"></div>
+</body>
+</html>

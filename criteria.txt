@@ -1,0 +1,1 @@
+{'Technique': ('over', [8]), 'Rating': ('equals', ['Big']), 'EU': ('equals', ['No'])}
