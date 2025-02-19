@@ -1,0 +1,1 @@
+variable "region" {\n  type = string\n  default = "us-east-1"\n}\n\nvariable "instance_type" {\n  type = string\n  default = "t2.micro"\n}\n\nvariable "ami_id" {\n  type = string\n  default = "ami-0c94855ba95c574c8" # Replace with your desired AMI ID\n}\n\nvariable "key_name" {\n  type = string\n  default = "my-key-pair"\n}\n
