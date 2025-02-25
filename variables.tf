@@ -1,13 +1,9 @@
-/* Begin variables.tf update */
-
-// Define AWS region variable
 variable "aws_region" {
   type        = string
   default     = "ap-south-1"
   description = "The AWS region where resources will be deployed."
 }
 
-// Define EKS cluster related variables
 variable "cluster_name" {
   type        = string
   default     = "example-eks-cluster"
@@ -32,25 +28,38 @@ variable "node_count" {
   description = "Desired number of nodes in the EKS managed node group."
 }
 
-/* Optional: Remove or comment out legacy variables that are no longer used */
-// variable "region" {
-//   type    = string
-//   default = "us-east-1"
-// }
+variable "environment" {
+  type        = string
+  default     = "dev"
+  description = "Environment name to append to resources to avoid conflicts (dev, staging, prod)."
+}
 
-// variable "instance_type" {
-//   type    = string
-//   default = "t2.micro"
-// }
+variable "deploy_prometheus" {
+  type        = bool
+  default     = false
+  description = "Whether to deploy Prometheus monitoring stack."
+}
 
-// variable "ami_id" {
-//   type    = string
-//   default = "ami-0c94855ba95c574c8" # Replace with your desired AMI ID
-// }
+variable "alert_email" {
+  type        = string
+  default     = "your-email@example.com"
+  description = "Email address for Prometheus alerts."
+}
 
-// variable "key_name" {
-//   type    = string
-//   default = "my-key-pair"
-// }
+variable "existing_role_arn" {
+  type        = string
+  default     = ""
+  description = "ARN of existing IAM role to use."
+}
 
-/* End variables.tf update */
+variable "oidc_provider_arn" {
+  type        = string
+  default     = ""
+  description = "ARN of the OIDC provider for the EKS cluster."
+}
+
+variable "oidc_provider_url" {
+  type        = string
+  default     = ""
+  description = "URL of the OIDC provider for the EKS cluster."
+}
