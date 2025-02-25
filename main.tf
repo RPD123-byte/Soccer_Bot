@@ -1,62 +1,68 @@
-#########################################
-# File: main.tf
-#########################################
-
+# main.tf
+# Provider configuration
 provider "aws" {
   region = var.aws_region
 }
 
-# Create a VPC for the EKS cluster
-resource "aws_vpc" "eks_vpc" {
-  cidr_block = "10.0.0.0/16"
+# Reference the existing EKS cluster
+data "aws_eks_cluster" "existing" {
+  name = var.cluster_name
 }
 
-# Create subnets in two availability zones
-resource "aws_subnet" "eks_subnet" {
-  count             = 2
-  vpc_id            = aws_vpc.eks_vpc.id
-  cidr_block        = cidrsubnet(aws_vpc.eks_vpc.cidr_block, 8, count.index)
-  availability_zone = "${var.aws_region}${count.index == 0 ? "a" : "b"}"
+# Reference the existing ECR repository
+data "aws_ecr_repository" "existing_repo" {
+  name = "example-eks-repo"
 }
 
-# Provision the EKS Cluster using the terraform-aws-modules/eks/aws module
-module "eks" {
-  source          = "terraform-aws-modules/eks/aws"
-  version         = "~> 20.0"
-  
-  cluster_name    = var.cluster_name
-  cluster_version = var.cluster_version
-  subnet_ids      = aws_subnet.eks_subnet[*].id
-  vpc_id          = aws_vpc.eks_vpc.id
-  eks_managed_node_groups = {
-    example = {
-      instance_types   = var.instance_types
-      desired_capacity = var.node_count
-      min_capacity     = var.node_count
-      max_capacity     = var.node_count
+# Reference existing VPC 
+data "aws_vpc" "existing_vpc" {
+  default = true  # You can change this to find a specific VPC by ID or tag
+}
+
+# Find existing subnets
+data "aws_subnets" "existing" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.existing_vpc.id]
+  }
+}
+
+# Configure the Kubernetes provider to use the correct authentication method
+provider "kubernetes" {
+  host                   = data.aws_eks_cluster.existing.endpoint
+  cluster_ca_certificate = base64decode(data.aws_eks_cluster.existing.certificate_authority[0].data)
+  exec {
+    api_version = "client.authentication.k8s.io/v1beta1"  # Updated from v1alpha1
+    command     = "aws"
+    args        = ["eks", "get-token", "--cluster-name", var.cluster_name]
+  }
+}
+
+# Configure the Helm provider
+provider "helm" {
+  kubernetes {
+    host                   = data.aws_eks_cluster.existing.endpoint
+    cluster_ca_certificate = base64decode(data.aws_eks_cluster.existing.certificate_authority[0].data)
+    exec {
+      api_version = "client.authentication.k8s.io/v1beta1"  # Updated from v1alpha1
+      command     = "aws"
+      args        = ["eks", "get-token", "--cluster-name", var.cluster_name]
     }
   }
 }
 
-# Create an ECR repository for container images
-resource "aws_ecr_repository" "app_repo" {
-  name = "example-eks-repo"
+# Create local values for use in outputs and resources
+locals {
+  ecr_repo_url = data.aws_ecr_repository.existing_repo.repository_url
 }
 
-# New: Fetch EKS cluster details using aws eks describe-cluster (data block)
-
-data "aws_eks_cluster" "example" {
-  name = var.cluster_name
-}
-
-# Configure the Kubernetes provider to interact with the EKS cluster using the data block
-provider "kubernetes" {
-  host                   = data.aws_eks_cluster.example.endpoint
-  cluster_ca_certificate = base64decode(data.aws_eks_cluster.example.certificate_authority.0.data)
-  exec {
-    api_version = "client.authentication.k8s.io/v1alpha1"
-    command     = "aws"
-    args        = ["eks", "get-token", "--cluster-name", var.cluster_name]
+# Update Kubernetes ServiceAccount to link with the IAM role using annotation
+resource "kubernetes_service_account" "example_sa" {
+  metadata {
+    name = "example-sa"
+    annotations = {
+      "eks.amazonaws.com/role-arn" = var.existing_role_arn
+    }
   }
 }
 
@@ -87,7 +93,7 @@ resource "kubernetes_horizontal_pod_autoscaler" "example_hpa" {
   }
 }
 
-# RBAC Configuration: Create a Role, Service Account, and RoleBinding
+# RBAC Configuration: Create a Role and RoleBinding
 resource "kubernetes_role" "example_role" {
   metadata {
     name = "example-role"
@@ -98,7 +104,6 @@ resource "kubernetes_role" "example_role" {
     verbs      = ["get", "list", "watch"]
   }
 }
-
 
 resource "kubernetes_role_binding" "example_rb" {
   metadata {
@@ -144,13 +149,15 @@ resource "kubernetes_network_policy" "example_np" {
   }
 }
 
-# Prometheus Monitoring: Deploy kube-prometheus-stack via a Helm release
+# Prometheus Monitoring: Deploy kube-prometheus-stack via a Helm release (conditionally)
 resource "helm_release" "prometheus" {
-  name             = "prometheus"
+  count            = var.deploy_prometheus ? 1 : 0
+  name             = "prometheus-${var.environment}"
   repository       = "https://prometheus-community.github.io/helm-charts"
   chart            = "kube-prometheus-stack"
   namespace        = "monitoring"
   create_namespace = true
+  
   values = [
     <<EOF
 alertmanager:
@@ -171,7 +178,7 @@ alertmanager:
       receivers:
       - name: 'default-receiver'
         email_configs:
-        - to: 'your-email@example.com'
+        - to: '${var.alert_email}'
 
 prometheus:
   prometheusSpec:
@@ -201,59 +208,3 @@ additionalPrometheusRules:
 EOF
   ]
 }
-
-# RBAC IAM Role and Policy for EKS Cluster
-
-resource "aws_iam_role" "example_eks_cluster_rbac_role" {
-  name = "example-eks-cluster-rbac-role"
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17",
-    Statement = [
-      {
-        Effect = "Allow",
-        Principal = {
-          Federated = "REPLACE_WITH_OIDC_PROVIDER_ARN"
-        },
-        Action = "sts:AssumeRoleWithWebIdentity",
-        Condition = {
-          StringEquals = {
-            "REPLACE_WITH_OIDC_PROVIDER_URL:sub": "system:serviceaccount:default:example-sa"
-          }
-        }
-      }
-    ]
-  })
-}
-
-resource "aws_iam_role_policy" "example_eks_cluster_rbac_policy" {
-  name = "example-eks-cluster-rbac-policy"
-  role = aws_iam_role.example_eks_cluster_rbac_role.id
-  policy = jsonencode({
-    Version = "2012-10-17",
-    Statement = [
-      {
-        Effect = "Allow",
-        Action = [
-          "s3:GetObject"
-        ],
-        Resource = "*"
-      }
-    ]
-  })
-}
-
-# Update Kubernetes ServiceAccount to link with the IAM role using annotation
-resource "kubernetes_service_account" "example_sa" {
-  metadata {
-    name = "example-sa"
-    annotations = {
-      "eks.amazonaws.com/role-arn" = aws_iam_role.example_eks_cluster_rbac_role.arn
-    }
-  }
-}
-
-#########################################
-# End of main.tf
-#########################################
-
-
