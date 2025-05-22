@@ -7,3 +7,5 @@ test.ipynb
 player_database.csv
 modifed_player_database.csv
 pulumi/.venv
+pulumi-3/obj
+pulumi-3/bin

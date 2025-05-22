@@ -1,5 +1,6 @@
 using Pulumi;
 using Pulumi.Aws.S3;
+using System.Threading.Tasks;
 
 class MyStack : Stack
 {
