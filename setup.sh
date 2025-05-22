@@ -1,19 +1,32 @@
-# ── 1. Move into the project ─────────────────────────────────────
-cd pulumi-2                       # directory that contains main.go
+# ── 0. Install tools once per machine ───────────────────────────────
+brew install python@3.11 pulumi              # CPython 3.11 + Pulumi CLI
+aws sts get-caller-identity                  # confirms AWS creds are set
 
-# 1) See what region the AWS CLI is using (prints nothing if unset)
-aws configure get region
+# ── 1. Jump into your project folder ────────────────────────────────
+cd pulumi                                    # the dir that holds main.py
 
-# 2) Tell Pulumi to use that same region
-#    – if the line above printed, for example, us-west-2:
-pulumi config set aws:region us-west-2
+# ── 2. Isolate deps ─────────────────────────────────────────────────
+python3.11 -m venv .venv
+. .venv/bin/activate
+python -m pip install --quiet --upgrade pip
+python -m pip install --quiet pulumi==3.* pulumi-aws==6.*
 
-# (If the previous command printed nothing, pick a region you actually use
-#  and substitute it in the command above.)
+# ── 3. Add Pulumi project metadata (if it isn’t there) ──────────────
+cat > Pulumi.yaml <<'EOF'
+name: pulumi-python-bucket
+runtime: python
+description: Creates a private S3 bucket and exports its name.
+EOF
 
-# 3) Clean out the bad blank value, just in case
-pulumi config rm aws:region --path 2>/dev/null || true   # ignore “not found” warning
-pulumi config set aws:region us-west-2                   # repeat with your region
 
-# 4) Try the deployment again
-pulumi up
+# ── 4. Log in to the Pulumi backend you prefer ──────────────────────
+pulumi login                                  # pick local or cloud
+
+# ── 5. Create / select a stack called “dev” ─────────────────────────
+pulumi stack init dev || pulumi stack select dev
+
+# ── 6. Point Pulumi at your AWS region (uses CLI default) ───────────
+pulumi config set aws:region $(aws configure get region)
+
+# ── 7. Deploy the bucket ────────────────────────────────────────────
+pulumi up                                     # review ➜ “yes”
