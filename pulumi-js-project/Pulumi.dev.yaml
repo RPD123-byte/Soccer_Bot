@@ -1,0 +1,7 @@
+encryptionsalt: v1:CZ1NRIuN1K0=:v1:OGHusb21NUzURRq3:y97Y7E/yEGy9SPFHyLeq+JM7XpbM8w==
+config:
+  aws:region: us-east-1
+  azure-native:location: East US
+  gcp:project: your-gcp-project
+  digitalocean:token: your-do-token
+  cloudflare:apiToken: your-cf-token

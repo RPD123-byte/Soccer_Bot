@@ -1,0 +1,4 @@
+name: pulumi-js-project
+runtime: nodejs
+description: A minimal AWS Pulumi JavaScript program
+main: index.js

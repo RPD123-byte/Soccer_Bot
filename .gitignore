@@ -9,3 +9,6 @@ modifed_player_database.csv
 pulumi/.venv
 pulumi-3/obj
 pulumi-3/bin
+node_modules/
+.venv/
+pulumi-js-project/package-lock.json
