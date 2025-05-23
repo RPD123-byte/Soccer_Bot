@@ -1,5 +1,5 @@
 {
-  "version": "34.0.0",
+  "version": "41.0.0",
   "artifacts": {
     "MyApplicationStack-dev.assets": {
       "type": "cdk:asset-manifest",
@@ -18,7 +18,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::980921723213:role/cdk-hnb659fds-deploy-role-980921723213-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::980921723213:role/cdk-hnb659fds-cfn-exec-role-980921723213-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-980921723213-us-east-1/09d1e19d6957b7078822ef0e8a0716517bb2dd5d8eb4b0eac33a56ab13d4f2fe.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-980921723213-us-east-1/2272bce9333649eb2274017decf5aa5604f75911fbc88a66d53fad971a77a945.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -50,6 +50,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "MyAppBucketAutoDeleteObjectsCustomResource293F7B06"
+          }
+        ],
+        "/MyApplicationStack-dev/Custom::S3AutoDeleteObjectsCustomResourceProvider": [
+          {
+            "type": "aws:cdk:is-custom-resource-handler-customResourceProvider",
+            "data": true
           }
         ],
         "/MyApplicationStack-dev/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role": [
@@ -213,5 +219,6 @@
         "file": "tree.json"
       }
     }
-  }
+  },
+  "minimumCliVersion": "2.1005.0"
 }

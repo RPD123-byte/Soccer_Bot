@@ -143,7 +143,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-980921723213-us-east-1",
-     "S3Key": "b7f33614a69548d6bafe224d751a7ef238cde19097415e553fe8b63a4c8fd8a6.zip"
+     "S3Key": "faa95a81ae7d7373f3e1f242268f904eb748d8d0fdd306e8a6fe515a1905a7d6.zip"
     },
     "Timeout": 900,
     "MemorySize": 128,
@@ -154,7 +154,7 @@
       "Arn"
      ]
     },
-    "Runtime": "nodejs18.x",
+    "Runtime": "nodejs22.x",
     "Description": {
      "Fn::Join": [
       "",
@@ -173,7 +173,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "MyApplicationStack-dev/Custom::S3AutoDeleteObjectsCustomResourceProvider/Handler",
-    "aws:asset:path": "asset.b7f33614a69548d6bafe224d751a7ef238cde19097415e553fe8b63a4c8fd8a6",
+    "aws:asset:path": "asset.faa95a81ae7d7373f3e1f242268f904eb748d8d0fdd306e8a6fe515a1905a7d6",
     "aws:asset:property": "Code"
    }
   },
@@ -614,7 +614,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/22PzW7DIBCEnyV3TO3kCZJUvVWx0t4rDFt3a34sszSyLN692LhyIvW03yzDDOx5VZa83ImbL6TqCo0Nn95IyI6l1cfkD3w6BdkBsfOnXSmP2mmU47bOOjI1WmGcSjnvotEwGxaITAvTKMGnl2AlobPz0T3XMBj0PqnIUBg+XV2+v8yt769J9NgKgpsYkxU8HXtc3Cs+Q6/daMAub79T6X/tkpsh+V0YJJyE38QalPkV6MupeZUpRnYOnpz51/14VA/uBxUM7Og90NyItn2ouQTqA0VWjynbPh14VfFqv/v2iMUQLKEBfs3zF8kOafevAQAA"
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/22PwW7DIBBEvyV3TOvkEPWYpOqtqpX0XmHYulsbsMzSyLL492Jw5UTqad8swwxsefm0548bcXWFVG3RYc2nCwnZsrj6mNyOT0cvWyB2+jQL5VHZDuW4rrMOTI1GaKtizruoO5gNCQLrhK6V4NOLN5LQmvnolisYNDoXVWAoNJ/ONt9Pc+37axI9NoLgKsZoBUeHHpN7wWfoOztqMOntNyr+r0m5GaLf+kHCUbhVLEGZX4G+rJpXmUJgJ+/I6n/d90fVYH9QwZDSD84Bza1omruqN0+9p8CqMeabhx0vS15uN98OsRi8IdTAz3n+Aku/h0mzAQAA"
    },
    "Metadata": {
     "aws:cdk:path": "MyApplicationStack-dev/CDKMetadata/Default"
