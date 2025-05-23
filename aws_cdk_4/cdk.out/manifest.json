@@ -1,0 +1,229 @@
+{
+  "version": "34.0.0",
+  "artifacts": {
+    "MyApplicationStack-dev.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "MyApplicationStack-dev.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "MyApplicationStack-dev": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://980921723213/us-east-1",
+      "properties": {
+        "templateFile": "MyApplicationStack-dev.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::980921723213:role/cdk-hnb659fds-deploy-role-980921723213-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::980921723213:role/cdk-hnb659fds-cfn-exec-role-980921723213-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-980921723213-us-east-1/220f0d6d0a3c84d745a7602d1a6541037721a152a2f7c7d8eb8cd3c1374cf8f2.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "MyApplicationStack-dev.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::980921723213:role/cdk-hnb659fds-lookup-role-980921723213-us-east-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "MyApplicationStack-dev.assets"
+      ],
+      "metadata": {
+        "/MyApplicationStack-dev/MyAppBucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyAppBucketB09BC2E8"
+          }
+        ],
+        "/MyApplicationStack-dev/MyAppBucket/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyAppBucketPolicy1F93E5CA"
+          }
+        ],
+        "/MyApplicationStack-dev/MyAppBucket/AutoDeleteObjectsCustomResource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyAppBucketAutoDeleteObjectsCustomResource293F7B06"
+          }
+        ],
+        "/MyApplicationStack-dev/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092"
+          }
+        ],
+        "/MyApplicationStack-dev/Custom::S3AutoDeleteObjectsCustomResourceProvider/Handler": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F"
+          }
+        ],
+        "/MyApplicationStack-dev/MyAppTable": [
+          {
+            "type": "aws:cdk:hasPhysicalName",
+            "data": {
+              "Ref": "MyAppTable80C828DF"
+            }
+          }
+        ],
+        "/MyApplicationStack-dev/MyAppTable/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyAppTable80C828DF"
+          }
+        ],
+        "/MyApplicationStack-dev/MyAppFunction/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyAppFunctionServiceRoleA1051285"
+          }
+        ],
+        "/MyApplicationStack-dev/MyAppFunction/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyAppFunctionServiceRoleDefaultPolicy53BF9228"
+          }
+        ],
+        "/MyApplicationStack-dev/MyAppFunction/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyAppFunctionBAC1424E"
+          }
+        ],
+        "/MyApplicationStack-dev/MyAppApi/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyAppApiCD846804"
+          }
+        ],
+        "/MyApplicationStack-dev/MyAppApi/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyAppApiDeploymentC370BD50ab38529c441c5e2a16ddba4c9c6f6355"
+          }
+        ],
+        "/MyApplicationStack-dev/MyAppApi/DeploymentStage.dev/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyAppApiDeploymentStagedev57A950A8"
+          }
+        ],
+        "/MyApplicationStack-dev/MyAppApi/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyAppApiEndpointC2DBBDDF"
+          }
+        ],
+        "/MyApplicationStack-dev/MyAppApi/Default/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyAppApiOPTIONSC53DFED1"
+          }
+        ],
+        "/MyApplicationStack-dev/MyAppApi/Default/api/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyAppApiapi80E448F6"
+          }
+        ],
+        "/MyApplicationStack-dev/MyAppApi/Default/api/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyAppApiapiOPTIONSD16BF050"
+          }
+        ],
+        "/MyApplicationStack-dev/MyAppApi/Default/api/GET/ApiPermission.MyApplicationStackdevMyAppApiC0AADBE6.GET..api": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyAppApiapiGETApiPermissionMyApplicationStackdevMyAppApiC0AADBE6GETapi7667FAE9"
+          }
+        ],
+        "/MyApplicationStack-dev/MyAppApi/Default/api/GET/ApiPermission.Test.MyApplicationStackdevMyAppApiC0AADBE6.GET..api": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyAppApiapiGETApiPermissionTestMyApplicationStackdevMyAppApiC0AADBE6GETapi5E316C11"
+          }
+        ],
+        "/MyApplicationStack-dev/MyAppApi/Default/api/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyAppApiapiGETF3DB169C"
+          }
+        ],
+        "/MyApplicationStack-dev/MyAppApi/Default/api/POST/ApiPermission.MyApplicationStackdevMyAppApiC0AADBE6.POST..api": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyAppApiapiPOSTApiPermissionMyApplicationStackdevMyAppApiC0AADBE6POSTapi766BC61B"
+          }
+        ],
+        "/MyApplicationStack-dev/MyAppApi/Default/api/POST/ApiPermission.Test.MyApplicationStackdevMyAppApiC0AADBE6.POST..api": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyAppApiapiPOSTApiPermissionTestMyApplicationStackdevMyAppApiC0AADBE6POSTapiFA4AA430"
+          }
+        ],
+        "/MyApplicationStack-dev/MyAppApi/Default/api/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyAppApiapiPOST7DD08EF3"
+          }
+        ],
+        "/MyApplicationStack-dev/BucketName": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BucketName"
+          }
+        ],
+        "/MyApplicationStack-dev/TableName": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "TableName"
+          }
+        ],
+        "/MyApplicationStack-dev/ApiUrl": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ApiUrl"
+          }
+        ],
+        "/MyApplicationStack-dev/FunctionName": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FunctionName"
+          }
+        ],
+        "/MyApplicationStack-dev/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/MyApplicationStack-dev/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/MyApplicationStack-dev/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "MyApplicationStack-dev"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}
