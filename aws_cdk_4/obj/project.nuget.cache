@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "dgSpecHash": "UEKTy0187Fq17DBecxgX7RC70y8dQVtX0MvWgYIX36/Z2YP2CLpEw5c+5wNdWcqrQevqwoUvzEF4UdOeJmsPKw==",
+  "success": true,
+  "projectFilePath": "/Users/computer/Soccer_Bot/aws_cdk_4/MyCdkApp.csproj",
+  "expectedPackageFiles": [
+    "/Users/computer/.nuget/packages/amazon.cdk.asset.awscliv1/2.2.200/amazon.cdk.asset.awscliv1.2.2.200.nupkg.sha512",
+    "/Users/computer/.nuget/packages/amazon.cdk.asset.kubectlv20/2.1.2/amazon.cdk.asset.kubectlv20.2.1.2.nupkg.sha512",
+    "/Users/computer/.nuget/packages/amazon.cdk.asset.nodeproxyagentv6/2.0.1/amazon.cdk.asset.nodeproxyagentv6.2.0.1.nupkg.sha512",
+    "/Users/computer/.nuget/packages/amazon.cdk.lib/2.100.0/amazon.cdk.lib.2.100.0.nupkg.sha512",
+    "/Users/computer/.nuget/packages/amazon.jsii.runtime/1.90.0/amazon.jsii.runtime.1.90.0.nupkg.sha512",
+    "/Users/computer/.nuget/packages/constructs/10.3.0/constructs.10.3.0.nupkg.sha512",
+    "/Users/computer/.nuget/packages/microsoft.extensions.configuration/7.0.0/microsoft.extensions.configuration.7.0.0.nupkg.sha512",
+    "/Users/computer/.nuget/packages/microsoft.extensions.configuration.abstractions/7.0.0/microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
+    "/Users/computer/.nuget/packages/microsoft.extensions.configuration.binder/7.0.0/microsoft.extensions.configuration.binder.7.0.0.nupkg.sha512",
+    "/Users/computer/.nuget/packages/microsoft.extensions.dependencyinjection/7.0.0/microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
+    "/Users/computer/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/7.0.0/microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "/Users/computer/.nuget/packages/microsoft.extensions.logging/7.0.0/microsoft.extensions.logging.7.0.0.nupkg.sha512",
+    "/Users/computer/.nuget/packages/microsoft.extensions.logging.abstractions/7.0.0/microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
+    "/Users/computer/.nuget/packages/microsoft.extensions.logging.configuration/7.0.0/microsoft.extensions.logging.configuration.7.0.0.nupkg.sha512",
+    "/Users/computer/.nuget/packages/microsoft.extensions.logging.console/7.0.0/microsoft.extensions.logging.console.7.0.0.nupkg.sha512",
+    "/Users/computer/.nuget/packages/microsoft.extensions.options/7.0.0/microsoft.extensions.options.7.0.0.nupkg.sha512",
+    "/Users/computer/.nuget/packages/microsoft.extensions.options.configurationextensions/7.0.0/microsoft.extensions.options.configurationextensions.7.0.0.nupkg.sha512",
+    "/Users/computer/.nuget/packages/microsoft.extensions.primitives/7.0.0/microsoft.extensions.primitives.7.0.0.nupkg.sha512",
+    "/Users/computer/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
+    "/Users/computer/.nuget/packages/system.text.encodings.web/7.0.0/system.text.encodings.web.7.0.0.nupkg.sha512",
+    "/Users/computer/.nuget/packages/system.text.json/7.0.0/system.text.json.7.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
