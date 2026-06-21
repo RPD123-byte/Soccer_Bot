@@ -1,7 +1,7 @@
 # main.tf
 # Provider configuration
 provider "aws" {
-  region = var.aws_region
+  region = "us-east-1"
 }
 
 # Reference the existing EKS cluster
