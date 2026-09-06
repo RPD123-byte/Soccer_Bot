@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: dummy-config
-data:
-  example: "seeded for ArgoCD test"
