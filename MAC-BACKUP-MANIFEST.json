@@ -1,0 +1,70 @@
+{
+  "source_folder": "repositories/RPD123-byte/Soccer_Bot",
+  "snapshot": "local-branches/test",
+  "source_ref": "refs/heads/test",
+  "source_commit": "4248ede71fe4ad43d065ecab09e099fd9dbc3607",
+  "excluded": [],
+  "redacted": [
+    "application.py",
+    "soccer.py"
+  ],
+  "files": {
+    ".gitignore": {
+      "original_sha256": "e6441ef558787a875978daa00e0335bd8917a603e11afc7ee6ebb4d826597f44",
+      "backup_sha256": "e6441ef558787a875978daa00e0335bd8917a603e11afc7ee6ebb4d826597f44",
+      "mode": "100644"
+    },
+    "README.md": {
+      "original_sha256": "1f34bd5d07b4cdf932a1e6a16d05c027ed4cb0471ebede7ac4073e9e475a7b11",
+      "backup_sha256": "1f34bd5d07b4cdf932a1e6a16d05c027ed4cb0471ebede7ac4073e9e475a7b11",
+      "mode": "100644"
+    },
+    "application.py": {
+      "original_sha256": "1ace259e88f031a7daa66aacb4089e25628f321774797772e4d0f6dd26f1cec2",
+      "backup_sha256": "22345cfa8f7d9f327e96ffe5669983e440fb5630343288ad6274a5c01b078284",
+      "mode": "100644"
+    },
+    "chat.html": {
+      "original_sha256": "f60ab408a5bf42efd681b907d3a5b554cac90889c0e402371ffc55814fafc208",
+      "backup_sha256": "f60ab408a5bf42efd681b907d3a5b554cac90889c0e402371ffc55814fafc208",
+      "mode": "100644"
+    },
+    "criteria.txt": {
+      "original_sha256": "b454a913c1fac8a93801447b8ae9f767f89f6c316e84864a8816ce157a9d6c71",
+      "backup_sha256": "b454a913c1fac8a93801447b8ae9f767f89f6c316e84864a8816ce157a9d6c71",
+      "mode": "100644"
+    },
+    "main.tf": {
+      "original_sha256": "f8747637a6dcb21c96430de84e2805c1148a914a43e7eb0d6e0bf8a4c2d78c3b",
+      "backup_sha256": "f8747637a6dcb21c96430de84e2805c1148a914a43e7eb0d6e0bf8a4c2d78c3b",
+      "mode": "100644"
+    },
+    "outputs.tf": {
+      "original_sha256": "c790a3d8de4c91363b33c044bbd26a4b448fd46e82b5d99ff29f5842d5525c3e",
+      "backup_sha256": "c790a3d8de4c91363b33c044bbd26a4b448fd46e82b5d99ff29f5842d5525c3e",
+      "mode": "100644"
+    },
+    "requirements.txt": {
+      "original_sha256": "d18b3ad5ee6b4cbca549ae9ed01d816c0880bd861a9f22698d3f8adb3883f3ca",
+      "backup_sha256": "d18b3ad5ee6b4cbca549ae9ed01d816c0880bd861a9f22698d3f8adb3883f3ca",
+      "mode": "100644"
+    },
+    "soccer.py": {
+      "original_sha256": "a46ad54a70ed072addd189e174a548e0ceae970dfb9f6c98af15203392436d19",
+      "backup_sha256": "d87f0bf1b4e81b4f5c0c619738a41c31f89c78a729546fb6d1f37c33ff91674a",
+      "mode": "100644"
+    },
+    "terraform.tfvars": {
+      "original_sha256": "bae0eaf9225e5381470b999220837d551fee18fed11e737776417c19e0679a8d",
+      "backup_sha256": "bae0eaf9225e5381470b999220837d551fee18fed11e737776417c19e0679a8d",
+      "mode": "100644"
+    },
+    "variables.tf": {
+      "original_sha256": "58c75e81095e733fff50c013ebe664e742f2669b662b87addf76347e59d30cfa",
+      "backup_sha256": "58c75e81095e733fff50c013ebe664e742f2669b662b87addf76347e59d30cfa",
+      "mode": "100644"
+    }
+  },
+  "nested_repositories": [],
+  "scope": "Current source snapshot, with credential redactions and listed exclusions. Git history is not copied."
+}
