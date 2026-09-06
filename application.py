@@ -14,7 +14,7 @@ import ast
 import os
 
 
-openai_api_key = "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"
+openai_api_key = "REDACTED_FOR_GITHUB_BACKUP"
 
 # Initialize Flask application
 application = Flask(__name__)
