@@ -1,0 +1,50 @@
+{
+  "source_folder": "repositories/RPD123-byte/Soccer_Bot",
+  "snapshot": "local-branches/main",
+  "source_ref": "refs/heads/main",
+  "source_commit": "5f89c2e3d1207b9bf35961bc69db63619f6e30d4",
+  "excluded": [],
+  "redacted": [
+    "application.py",
+    "soccer.py"
+  ],
+  "files": {
+    ".gitignore": {
+      "original_sha256": "e6441ef558787a875978daa00e0335bd8917a603e11afc7ee6ebb4d826597f44",
+      "backup_sha256": "e6441ef558787a875978daa00e0335bd8917a603e11afc7ee6ebb4d826597f44",
+      "mode": "100644"
+    },
+    "README.md": {
+      "original_sha256": "397ccd544ed5262db99564ab8a042d50667a2c7acb2234d471a6dcbd4081520e",
+      "backup_sha256": "397ccd544ed5262db99564ab8a042d50667a2c7acb2234d471a6dcbd4081520e",
+      "mode": "100644"
+    },
+    "application.py": {
+      "original_sha256": "1ace259e88f031a7daa66aacb4089e25628f321774797772e4d0f6dd26f1cec2",
+      "backup_sha256": "22345cfa8f7d9f327e96ffe5669983e440fb5630343288ad6274a5c01b078284",
+      "mode": "100644"
+    },
+    "chat.html": {
+      "original_sha256": "f60ab408a5bf42efd681b907d3a5b554cac90889c0e402371ffc55814fafc208",
+      "backup_sha256": "f60ab408a5bf42efd681b907d3a5b554cac90889c0e402371ffc55814fafc208",
+      "mode": "100644"
+    },
+    "criteria.txt": {
+      "original_sha256": "b454a913c1fac8a93801447b8ae9f767f89f6c316e84864a8816ce157a9d6c71",
+      "backup_sha256": "b454a913c1fac8a93801447b8ae9f767f89f6c316e84864a8816ce157a9d6c71",
+      "mode": "100644"
+    },
+    "requirements.txt": {
+      "original_sha256": "d18b3ad5ee6b4cbca549ae9ed01d816c0880bd861a9f22698d3f8adb3883f3ca",
+      "backup_sha256": "d18b3ad5ee6b4cbca549ae9ed01d816c0880bd861a9f22698d3f8adb3883f3ca",
+      "mode": "100644"
+    },
+    "soccer.py": {
+      "original_sha256": "a46ad54a70ed072addd189e174a548e0ceae970dfb9f6c98af15203392436d19",
+      "backup_sha256": "d87f0bf1b4e81b4f5c0c619738a41c31f89c78a729546fb6d1f37c33ff91674a",
+      "mode": "100644"
+    }
+  },
+  "nested_repositories": [],
+  "scope": "Current source snapshot, with credential redactions and listed exclusions. Git history is not copied."
+}

@@ -15,7 +15,7 @@ from transformers import GPT2Tokenizer
 
 
 
-openai.api_key = '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'
+openai.api_key = 'REDACTED_FOR_GITHUB_BACKUP'
 
 # Initialize Flask application
 app = Flask(__name__)
